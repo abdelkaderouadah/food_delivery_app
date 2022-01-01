@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/background/
+    - assets/images/onboarding/
     - assets/images/side_menu/
     - assets/images/category/
     - assets/images/logo/
