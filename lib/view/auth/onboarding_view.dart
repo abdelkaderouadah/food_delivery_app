@@ -4,9 +4,8 @@ import 'package:food_delivery_app/theme/constance.dart';
 import 'package:food_delivery_app/view/widgets/square_button.dart';
 import 'package:get/get.dart';
 
-class OnboardingView extends StatelessWidget {
-  OnboardingView({Key? key}) : super(key: key);
-  final _controller = OnboardingController();
+class OnboardingView extends GetWidget<OnboardingViewModel> {
+  const OnboardingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +20,9 @@ class OnboardingView extends StatelessWidget {
               child: Stack(
                 children: [
                   PageView.builder(
-                    controller: _controller.pageController,
-                    onPageChanged: _controller.selectedPageIndex,
-                    itemCount: _controller.onboardingPages.length,
+                    controller: controller.pageController,
+                    onPageChanged: controller.selectedPageIndex,
+                    itemCount: controller.onboardingPages.length,
                     itemBuilder: (context, index) {
                       return Container(
                         padding: const EdgeInsets.all(20),
@@ -51,7 +50,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(115),
                                       child: Image.asset(
-                                        _controller
+                                        controller
                                             .onboardingPages[index].imageAsset,
                                       ),
                                     ),
@@ -72,7 +71,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                        _controller.onboardingPages[index]
+                                        controller.onboardingPages[index]
                                             .imageAssetList[4],
                                         fit: BoxFit.cover,
                                       ),
@@ -94,7 +93,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                        _controller.onboardingPages[index]
+                                        controller.onboardingPages[index]
                                             .imageAssetList[0],
                                         fit: BoxFit.cover,
                                       ),
@@ -116,7 +115,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                        _controller.onboardingPages[index]
+                                        controller.onboardingPages[index]
                                             .imageAssetList[3],
                                         fit: BoxFit.cover,
                                       ),
@@ -138,7 +137,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                        _controller.onboardingPages[index]
+                                        controller.onboardingPages[index]
                                             .imageAssetList[1],
                                         fit: BoxFit.cover,
                                       ),
@@ -160,7 +159,7 @@ class OnboardingView extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
-                                        _controller.onboardingPages[index]
+                                        controller.onboardingPages[index]
                                             .imageAssetList[2],
                                         fit: BoxFit.cover,
                                       ),
@@ -171,13 +170,13 @@ class OnboardingView extends StatelessWidget {
                             ),
                             addVerticalSpace(100),
                             Text(
-                              _controller.onboardingPages[index].title,
+                              controller.onboardingPages[index].title,
                               style: _themeData.textTheme.headline3,
                               textAlign: TextAlign.center,
                             ),
                             addVerticalSpace(15),
                             Text(
-                              _controller.onboardingPages[index].description,
+                              controller.onboardingPages[index].description,
                               style: _themeData.textTheme.headline5,
                               textAlign: TextAlign.center,
                             ),
@@ -192,7 +191,7 @@ class OnboardingView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
-                        _controller.onboardingPages.length,
+                        controller.onboardingPages.length,
                         (index) => Obx(
                           () {
                             return Container(
@@ -201,8 +200,8 @@ class OnboardingView extends StatelessWidget {
                               margin: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
                                 color:
-                                    _controller.selectedPageIndex.value == index
-                                        ? yellowColor
+                                    controller.selectedPageIndex.value == index
+                                        ? Colors.red
                                         : yellowColor.withOpacity(0.5),
                                 shape: BoxShape.circle,
                               ),
@@ -216,16 +215,7 @@ class OnboardingView extends StatelessWidget {
                     bottom: 30,
                     left: constraints.maxWidth / 2 - 30,
                     child: SquareIconButton(
-                      onPressed: () {
-                        //TODO forward button
-                        // Get.isDarkMode
-                        //     ? Get.changeTheme(lightTheme)
-                        //     : Get.changeTheme(darkTheme);
-                        _controller.forwardAction();
-                        Get.isDarkMode
-                            ? Get.changeTheme(lightTheme)
-                            : Get.changeTheme(darkTheme);
-                      },
+                      onPressed: () => controller.forwardAction(),
                       width: 70,
                       borderRadius: 50,
                       buttonColor: primaryColor,

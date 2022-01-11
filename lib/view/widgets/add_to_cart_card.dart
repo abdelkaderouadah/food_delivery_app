@@ -35,7 +35,7 @@ class CustomCard extends StatelessWidget {
             height: 25,
             width: 25,
             child: SquareIconButton(
-              onPressed: () {},
+              onPressed: onClose,
               buttonColor: whiteColor,
               borderColor: primaryColor,
               child: const Icon(
@@ -83,7 +83,7 @@ class CustomCard extends StatelessWidget {
                       ),
                       addHorizontalSpace(15),
                       SquareIconButton(
-                        onPressed: () => onSub,
+                        onPressed: onSub,
                         buttonColor: whiteColor,
                         borderColor: primaryColor,
                         child: const Center(
@@ -104,7 +104,7 @@ class CustomCard extends StatelessWidget {
                       ),
                       addHorizontalSpace(5),
                       SquareIconButton(
-                        onPressed: () => onAdd,
+                        onPressed: onAdd,
                         buttonColor: whiteColor,
                         borderColor: primaryColor,
                         child: const Icon(

@@ -28,10 +28,12 @@ const lowColor = Color(0xFF474755);
 TextTheme defaultText = TextTheme(
   headline1: GoogleFonts.poppins(fontSize: 45, fontWeight: FontWeight.w700),
   headline2: GoogleFonts.poppins(fontSize: 36, fontWeight: FontWeight.w600),
-  headline3: GoogleFonts.poppins(fontSize: 30, fontWeight: FontWeight.w700),
+  headline3: GoogleFonts.poppins(fontSize: 30, fontWeight: FontWeight.w600),
   headline4: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600),
   headline5: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),
-  headline6: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600),
+
+  headline6:
+      GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600), //button
   bodyText1: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.w600),
   bodyText2: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w400),
   subtitle1: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600),
@@ -45,13 +47,13 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   scaffoldBackgroundColor: primaryBackgroundColor,
   drawerTheme: const DrawerThemeData(backgroundColor: primaryBackgroundColor),
   textTheme: TextTheme(
-    // headline1: defaultText.headline1!,
+    headline1: defaultText.headline1!.apply(color: primaryTextColor),
     headline2: defaultText.headline2!.apply(color: primaryTextColor),
     headline3: defaultText.headline3!.apply(color: primaryTextColor),
     headline4: defaultText.headline4!.apply(color: primaryTextColor),
     headline5: defaultText.headline5!.apply(color: subColor),
     headline6: defaultText.headline6!.apply(color: whiteColor),
-    // bodyText1: defaultText.bodyText1!,
+    bodyText1: defaultText.bodyText1!.apply(color: primaryTextColor),
     bodyText2: defaultText.bodyText2!.apply(color: primaryTextColor),
     subtitle1: defaultText.subtitle1!.apply(color: primaryTextColor),
     subtitle2: defaultText.subtitle2!.apply(color: primaryTextColor),
@@ -65,13 +67,13 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: darkBackgroundColor,
   drawerTheme: const DrawerThemeData(backgroundColor: darkBackgroundColor),
   textTheme: TextTheme(
-    // headline1: defaultText.headline1!,
+    headline1: defaultText.headline1!.apply(color: whiteColor),
     headline2: defaultText.headline2!.apply(color: whiteColor),
     headline3: defaultText.headline3!.apply(color: whiteColor),
     headline4: defaultText.headline4!.apply(color: whiteColor),
     headline5: defaultText.headline5!.apply(color: subTextColor),
     headline6: defaultText.headline6!.apply(color: whiteColor),
-    // bodyText1: defaultText.bodyText1!,
+    bodyText1: defaultText.bodyText1!.apply(color: whiteColor),
     bodyText2: defaultText.bodyText2!.apply(color: const Color(0xFF9796A1)),
     subtitle1: defaultText.subtitle1!.apply(color: whiteColor),
     subtitle2: defaultText.subtitle2!.apply(color: subTextColor),

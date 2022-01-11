@@ -21,6 +21,7 @@ class CustomPrice extends StatelessWidget {
     return Container(
       // height: 30,
       // width: 80,
+      alignment: Alignment.center,
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/theme/constance.dart';
-import 'package:food_delivery_app/view/screens/side_menu_view.dart';
-import 'package:food_delivery_app/view/widgets/add_to_cart_card.dart';
-import 'package:food_delivery_app/view/widgets/button.dart';
-import 'package:food_delivery_app/view/widgets/card_food.dart';
-import 'package:food_delivery_app/view/widgets/card_lasted_orders.dart';
-import 'package:food_delivery_app/view/widgets/card_restaurant.dart';
-import 'package:food_delivery_app/view/widgets/card_search_restaurant.dart';
-import 'package:food_delivery_app/view/widgets/card_upcoming_order.dart';
-import 'package:food_delivery_app/view/widgets/icon_button.dart';
-import 'package:food_delivery_app/view/widgets/phone_code_textfield.dart';
-import 'package:food_delivery_app/view/widgets/price.dart';
-import 'package:food_delivery_app/view/widgets/review.dart';
-import 'package:food_delivery_app/view/widgets/square_button.dart';
-import 'package:food_delivery_app/view/widgets/text_form_field.dart';
 
 class Template extends StatelessWidget {
   Template({Key? key}) : super(key: key);
@@ -28,12 +14,11 @@ class Template extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData _themeData = Theme.of(context);
+    // final ThemeData _themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
       ),
-      drawer: const SideMenuView(),
       body: SingleChildScrollView(
         child: Container(
           color: darkBackgroundColor,

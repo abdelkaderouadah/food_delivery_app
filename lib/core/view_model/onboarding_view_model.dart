@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/helper/routes.dart';
 import 'package:food_delivery_app/model/onboarding_model.dart';
 import 'package:get/get.dart';
 
-class OnboardingController extends GetxController {
+class OnboardingViewModel extends GetxController {
   var selectedPageIndex = 0.obs;
 
-  bool get isLastPage => selectedPageIndex.value == onboardingPages.length - 1;
+  bool get isLastPage => selectedPageIndex.value == _onboardingPages.length - 1;
 
   var pageController = PageController();
 
   forwardAction() {
     if (isLastPage) {
-      //go to login page
+      Get.offNamed(RoutingNameConstants.welcomeScreen);
     } else {
       pageController.nextPage(
         duration: 300.milliseconds,
@@ -20,7 +21,11 @@ class OnboardingController extends GetxController {
     }
   }
 
-  List<OnboardingInfo> onboardingPages = [
+  List<OnboardingInfo> get onboardingPages {
+    return [..._onboardingPages];
+  }
+
+  final List<OnboardingInfo> _onboardingPages = [
     OnboardingInfo(
       "assets/images/onboarding/photo1.png",
       "Browse your menu and order directly",
@@ -38,10 +43,10 @@ class OnboardingController extends GetxController {
       "Even to space with us! Together",
       "Our app can send you everywhere, even space. For only \$2.99 per month",
       [
-        "assets/images/onboarding/food13.png",
+        "assets/images/onboarding/food16.png",
         "assets/images/onboarding/food14.png",
         "assets/images/onboarding/food15.png",
-        "assets/images/onboarding/food16.png",
+        "assets/images/onboarding/food13.png",
         "assets/images/onboarding/food14.png",
       ],
     ),
@@ -51,10 +56,10 @@ class OnboardingController extends GetxController {
       "Our app can send you everywhere, even space. For only \$2.99 per month",
       [
         "assets/images/onboarding/photo4.png",
-        "assets/images/onboarding/photo5.png",
         "assets/images/onboarding/photo6.png",
+        "assets/images/onboarding/photo5.png",
         "assets/images/onboarding/photo7.png",
-        "assets/images/onboarding/photo4.png",
+        "assets/images/onboarding/photo6.png",
       ],
     ),
   ];

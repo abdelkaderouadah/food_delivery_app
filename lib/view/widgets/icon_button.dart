@@ -27,7 +27,7 @@ class CustomIconButton extends StatelessWidget {
       width: width,
       height: height,
       child: TextButton(
-        onPressed: () => onPress,
+        onPressed: onPress,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

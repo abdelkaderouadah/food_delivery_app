@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/theme/constance.dart';
 import 'package:food_delivery_app/view/widgets/icon_button.dart';
 import 'package:food_delivery_app/view/widgets/price.dart';
-import 'package:food_delivery_app/view/widgets/review.dart';
 import 'package:food_delivery_app/view/widgets/square_button.dart';
 import 'package:get/get.dart';
 
@@ -41,12 +40,7 @@ class FoodDetailsView extends StatelessWidget {
                           height: 34,
                           width: 34,
                           child: SquareIconButton(
-                            onPressed: () {
-                              //TODO back button
-                              Get.isDarkMode
-                                  ? Get.changeTheme(lightTheme)
-                                  : Get.changeTheme(darkTheme);
-                            },
+                            onPressed: () => Get.back(),
                             width: 34,
                             borderRadius: 10,
                             buttonColor: primaryBackgroundColor,
@@ -56,7 +50,7 @@ class FoodDetailsView extends StatelessWidget {
                               child: Icon(
                                 Icons.arrow_back_ios,
                                 color: blackColor,
-                                size: 20,
+                                size: 18,
                               ),
                             ),
                           ),

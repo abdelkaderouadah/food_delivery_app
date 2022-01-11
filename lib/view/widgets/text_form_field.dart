@@ -5,21 +5,19 @@ class CustomTextFormField extends StatelessWidget {
   final String text, hint;
   final TextStyle style, inputStyle;
   final TextInputType keybordType;
-  final Function() onSave;
-  final Function() validator;
   final bool obscureText;
   final Color fillColor;
+  final TextEditingController controller;
   const CustomTextFormField({
     Key? key,
     required this.text,
     required this.hint,
-    required this.onSave,
-    required this.validator,
     required this.style,
     required this.keybordType,
     this.obscureText = false,
     this.fillColor = Colors.white,
     required this.inputStyle,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -33,12 +31,9 @@ class CustomTextFormField extends StatelessWidget {
           style: style,
         ),
         addVerticalSpace(10),
-        TextFormField(
+        TextField(
+          controller: controller,
           obscureText: obscureText,
-          onSaved: (_) => onSave,
-          validator: (_) {
-            validator;
-          },
           keyboardType: keybordType,
           style: inputStyle,
           decoration: InputDecoration(

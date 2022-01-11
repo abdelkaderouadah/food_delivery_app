@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/helper/routes.dart';
 import 'package:food_delivery_app/theme/constance.dart';
 import 'package:food_delivery_app/view/widgets/button.dart';
 import 'package:food_delivery_app/view/widgets/icon_button.dart';
@@ -11,6 +12,9 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
+    var nameController = TextEditingController();
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -51,17 +55,15 @@ class RegisterView extends StatelessWidget {
                           horizontal: 20, vertical: 10),
                       padding: const EdgeInsets.only(top: 70),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Sign Up',
-                              style: _themeData.textTheme.headline2,
-                            ),
+                          Text(
+                            'Sign Up',
+                            style: _themeData.textTheme.headline2,
                           ),
                           addVerticalSpace(40),
                           CustomTextFormField(
+                            controller: nameController,
                             text: "Full name",
                             style: _themeData.textTheme.headline5!,
                             hint: "Ouadah Abdelkader",
@@ -70,11 +72,10 @@ class RegisterView extends StatelessWidget {
                             fillColor: Get.isDarkMode
                                 ? const Color(0xFF393948)
                                 : primaryBackgroundColor,
-                            onSave: () {},
-                            validator: () {},
                           ),
                           addVerticalSpace(20),
                           CustomTextFormField(
+                            controller: emailController,
                             text: "E-mail",
                             style: _themeData.textTheme.headline5!,
                             hint: "ouadah.abdelkader9@gmail.com",
@@ -83,11 +84,10 @@ class RegisterView extends StatelessWidget {
                             fillColor: Get.isDarkMode
                                 ? const Color(0xFF393948)
                                 : primaryBackgroundColor,
-                            onSave: () {},
-                            validator: () {},
                           ),
                           addVerticalSpace(20),
                           CustomTextFormField(
+                            controller: passwordController,
                             text: "Password",
                             style: _themeData.textTheme.headline5!,
                             hint: "*******",
@@ -97,34 +97,31 @@ class RegisterView extends StatelessWidget {
                             fillColor: Get.isDarkMode
                                 ? const Color(0xFF393948)
                                 : primaryBackgroundColor,
-                            onSave: () {},
-                            validator: () {},
                           ),
                           addVerticalSpace(30),
-                          CustomButton(
-                            width: 250.0,
-                            text: "SIGN UP",
-                            style: _themeData.textTheme.headline6!
-                                .copyWith(letterSpacing: 1.8),
-                            onPress: () {
-                              //TODO SignUp
-                            },
+                          Align(
+                            alignment: Alignment.center,
+                            child: CustomButton(
+                              width: 250.0,
+                              text: "SIGN UP",
+                              style: _themeData.textTheme.headline6!
+                                  .copyWith(letterSpacing: 1.8),
+                              onPress: () {
+                                //TODO SignUp
+                              },
+                            ),
                           ),
                           addVerticalSpace(25),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Dont't have an account?",
+                                "Already have an account?",
                                 style: _themeData.textTheme.subtitle2!,
                               ),
                               TextButton(
-                                onPressed: () {
-                                  //TODO Login Button
-                                  Get.isDarkMode
-                                      ? Get.changeTheme(lightTheme)
-                                      : Get.changeTheme(darkTheme);
-                                },
+                                onPressed: () => Get.toNamed(
+                                    RoutingNameConstants.loginScreen),
                                 child: Text(
                                   "Login",
                                   style: _themeData.textTheme.subtitle2!

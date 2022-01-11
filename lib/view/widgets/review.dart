@@ -30,7 +30,7 @@ class CustomReview extends StatelessWidget {
               TextSpan(
                 text: review,
                 style: textTheme.bodyText2!
-                    .apply(fontWeightDelta: 4, color: textColor)
+                    .apply(fontWeightDelta: 2, color: textColor)
                     .copyWith(fontSize: 12),
               ),
               const WidgetSpan(
@@ -39,7 +39,7 @@ class CustomReview extends StatelessWidget {
               TextSpan(
                 text: "($nbReview+)",
                 style: textTheme.bodyText2!
-                    .apply(fontWeightDelta: 4)
+                    .apply(fontWeightDelta: 2)
                     .copyWith(fontSize: 10, color: subColor),
               ),
             ],

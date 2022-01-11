@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/model/sample_data.dart';
 import 'package:food_delivery_app/theme/constance.dart';
 import 'package:food_delivery_app/view/screens/food_details_view.dart';
-import 'package:food_delivery_app/view/screens/side_menu_view.dart';
+import 'package:food_delivery_app/view/widgets/icon_button.dart';
 import 'package:food_delivery_app/view/widgets/card_food.dart';
 import 'package:food_delivery_app/view/widgets/card_restaurant.dart';
 import 'package:food_delivery_app/view/widgets/square_button.dart';
@@ -14,9 +14,10 @@ class HomeScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
+    var searchController = TextEditingController();
     return SafeArea(
       child: Scaffold(
-        drawer: const SideMenuView(),
+        drawer: _buildSideMenu(context),
         body: LayoutBuilder(
           builder: (context, constraints) {
             return SizedBox(
@@ -46,10 +47,8 @@ class HomeScreenView extends StatelessWidget {
                                 borderColor: Get.isDarkMode
                                     ? subBackgroundColor
                                     : primaryBackgroundColor,
-                                onPressed: () {
-                                  //TODO side_menu
-                                  Scaffold.of(context).openDrawer();
-                                },
+                                onPressed: () =>
+                                    Scaffold.of(context).openDrawer(),
                                 child: Icon(
                                   Icons.menu,
                                   color: Get.isDarkMode
@@ -108,9 +107,8 @@ class HomeScreenView extends StatelessWidget {
                           Row(
                             children: [
                               Expanded(
-                                child: TextFormField(
-                                  onSaved: (_) {},
-                                  validator: (_) {},
+                                child: TextField(
+                                  controller: searchController,
                                   keyboardType: TextInputType.text,
                                   style: _themeData.textTheme.headline4!,
                                   decoration: InputDecoration(
@@ -299,6 +297,140 @@ class HomeScreenView extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSideMenu(BuildContext context) {
+    final ThemeData _themeData = Theme.of(context);
+    return SizedBox(
+      child: Drawer(
+        child: Container(
+          padding: const EdgeInsets.only(left: 30, top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(
+                  "assets/images/user.png",
+                  fit: BoxFit.cover,
+                  height: 100,
+                  width: 100,
+                ),
+              ),
+              addVerticalSpace(20),
+              Text(
+                "Ouadah Abdelkader",
+                style: _themeData.textTheme.headline4!.copyWith(fontSize: 20),
+              ),
+              addVerticalSpace(10),
+              Text(
+                "ouadah.abdelkader9@gmail.com",
+                style: _themeData.textTheme.headline5!.copyWith(fontSize: 12),
+              ),
+              addVerticalSpace(20),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/document_dark.png")
+                    : Image.asset("assets/images/side_menu/document.png"),
+                title: Text(
+                  "My Orders",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO myOrders
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/profile_dark.png")
+                    : Image.asset("assets/images/side_menu/profile.png"),
+                title: Text(
+                  "My Profile",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO profile
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/location_dark.png")
+                    : Image.asset("assets/images/side_menu/location.png"),
+                title: Text(
+                  "Delivery Address",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO delivery adress
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/wallet_dark.png")
+                    : Image.asset("assets/images/side_menu/wallet.png"),
+                title: Text(
+                  "Payment Methods",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO Payment
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/message_dark.png")
+                    : Image.asset("assets/images/side_menu/message.png"),
+                title: Text(
+                  "Contact Us",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO contact
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/setting_dark.png")
+                    : Image.asset("assets/images/side_menu/setting.png"),
+                title: Text(
+                  "Settings",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO Settings
+                },
+              ),
+              ListTile(
+                leading: Get.isDarkMode
+                    ? Image.asset("assets/images/side_menu/helps_dark.png")
+                    : Image.asset("assets/images/side_menu/helps.png"),
+                title: Text(
+                  "Helps & FAQs",
+                  style: _themeData.textTheme.subtitle1,
+                ),
+                onTap: () {
+                  //TODO help
+                },
+              ),
+              addVerticalSpace(20),
+              CustomIconButton(
+                text: "Log Out",
+                height: 50,
+                width: 150,
+                onPress: () {},
+                icon: Image.asset(
+                  "assets/images/side_menu/Logout.png",
+                  height: 30,
+                  width: 30,
+                ),
+                style: _themeData.textTheme.headline6!,
+                // .copyWith(fontSize: 16, color: whiteColor),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/core/view_model/auth_view_model.dart';
+import 'package:food_delivery_app/helper/routes.dart';
 import 'package:food_delivery_app/theme/constance.dart';
 import 'package:food_delivery_app/view/widgets/button.dart';
 import 'package:food_delivery_app/view/widgets/icon_button.dart';
@@ -6,12 +8,15 @@ import 'package:food_delivery_app/view/widgets/square_button.dart';
 import 'package:food_delivery_app/view/widgets/text_form_field.dart';
 import 'package:get/get.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends GetWidget<AuthViewModel> {
   const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
+
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -51,18 +56,13 @@ class LoginView extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             height: constraints.maxHeight * 0.15,
                             alignment: Alignment.centerLeft,
                             child: SquareIconButton(
-                              onPressed: () {
-                                //TODO back button
-                                Get.isDarkMode
-                                    ? Get.changeTheme(lightTheme)
-                                    : Get.changeTheme(darkTheme);
-                              },
+                              onPressed: () => Get.back(),
                               width: 34,
                               borderRadius: 10,
                               buttonColor: Get.isDarkMode
@@ -84,15 +84,13 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           addVerticalSpace(10),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Login',
-                              style: _themeData.textTheme.headline2,
-                            ),
+                          Text(
+                            'Login',
+                            style: _themeData.textTheme.headline2,
                           ),
                           addVerticalSpace(30),
                           CustomTextFormField(
+                            controller: emailController,
                             text: "E-mail",
                             style: _themeData.textTheme.headline5!,
                             hint: "Ouadah",
@@ -101,11 +99,10 @@ class LoginView extends StatelessWidget {
                             fillColor: Get.isDarkMode
                                 ? const Color(0xFF393948)
                                 : primaryBackgroundColor,
-                            onSave: () {},
-                            validator: () {},
                           ),
                           addVerticalSpace(20),
                           CustomTextFormField(
+                            controller: passwordController,
                             text: "Password",
                             style: _themeData.textTheme.headline5!,
                             hint: "*******",
@@ -115,16 +112,13 @@ class LoginView extends StatelessWidget {
                             fillColor: Get.isDarkMode
                                 ? const Color(0xFF393948)
                                 : primaryBackgroundColor,
-                            onSave: () {},
-                            validator: () {},
                           ),
                           addVerticalSpace(10),
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
-                              onPressed: () {
-                                //TODO Forgot password
-                              },
+                              onPressed: () => Get.toNamed(
+                                  RoutingNameConstants.resetPasswordScreen),
                               child: Text(
                                 "Forgot password?",
                                 style: _themeData.textTheme.subtitle2!.apply(
@@ -136,14 +130,17 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           addVerticalSpace(25),
-                          CustomButton(
-                            width: 250.0,
-                            text: "LOGIN",
-                            style: _themeData.textTheme.headline6!
-                                .copyWith(letterSpacing: 1.8),
-                            onPress: () {
-                              //TODO Login
-                            },
+                          Align(
+                            alignment: Alignment.center,
+                            child: CustomButton(
+                              width: 250.0,
+                              text: "LOGIN",
+                              style: _themeData.textTheme.headline6!
+                                  .copyWith(letterSpacing: 1.8),
+                              onPress: () {
+                                //TODO Login
+                              },
+                            ),
                           ),
                           addVerticalSpace(25),
                           Row(
@@ -154,9 +151,8 @@ class LoginView extends StatelessWidget {
                                 style: _themeData.textTheme.subtitle2!,
                               ),
                               TextButton(
-                                onPressed: () {
-                                  //TODO Sign Up Button
-                                },
+                                onPressed: () => Get.toNamed(
+                                    RoutingNameConstants.registerScreen),
                                 child: Text(
                                   "Sign Up",
                                   style: _themeData.textTheme.subtitle2!
